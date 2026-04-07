@@ -59,4 +59,32 @@ uv run python src/verificar_paquete.py
 
 ## Ejercicio 4
 
+La generación de llave y firma se implementó en [firmar.py](src/firmar.py)
 
+Para ejecutarlo, correr este comando desde la raíz
+
+```bash
+uv run python src/firmar.py
+```
+
+Para verificar la firma, el código se encuentra en este archivo [verify_signature.py](src/verify_signature.py)
+
+Para ejecutarlo, correr este comando desde la raíz
+
+```bash
+uv run python src/verify_signature.py
+```
+
+Con el archivo original, se obtuvo este resultado:
+
+![img5](imgs/correct_sign.png)
+
+Cambiando un solo caracter del archivo original, se obtiene: 
+
+![img6](imgs/invalid.png)
+
+
+Luego, se revirtió el cambio y se cambio un caracter de uno de los archivos de actualización. La firma es válida porque no hemos actualizado la firma generada por el archivo que contiene los hashes originales, tenemos que actualizar el archivo txt si hay cambios y generar una nueva firma.
+Al correr la verificación del paquete se obtiene que hay un archivo incorrecto pues el hash no coincide. 
+
+![img7](imgs/final.png)
